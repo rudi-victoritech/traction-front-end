@@ -1,26 +1,22 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import AppNavbar from "./components/AppNavbar";
+import "./App.scss";
+import { Switch, Route } from "react-router-dom";
+import TasksView from "./components/Views/TasksView";
+import ListsView from "./components/Views/ListsView";
+import ProfileView from "./components/Views/ProfileView";
+import NotFoundView from "./components/Views/NotFoundView";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <AppNavbar />
+      <Switch>
+        <Route path="/" component={TasksView} exact />
+        <Route path="/lists" component={ListsView} exact />
+        <Route path="/profile" component={ProfileView} exact />
+        <Route component={NotFoundView} exact />
+      </Switch>
+    </>
   );
 }
-
-export default App;
