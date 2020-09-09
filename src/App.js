@@ -1,7 +1,7 @@
 import React from "react";
 import AppNavbar from "./components/AppNavbar";
 import "./App.scss";
-import { Switch, Route } from "react-router-dom";
+import { Switch, Route, BrowserRouter } from "react-router-dom";
 import TasksView from "./components/Views/TasksView";
 import ListsView from "./components/Views/ListsView";
 import ProfileView from "./components/Views/ProfileView";
@@ -9,7 +9,7 @@ import NotFoundView from "./components/Views/NotFoundView";
 
 export default function App() {
   return (
-    <>
+    <BrowserRouter>
       <AppNavbar />
       <Switch>
         <Route path="/" component={TasksView} exact />
@@ -17,6 +17,6 @@ export default function App() {
         <Route path="/profile" component={ProfileView} exact />
         <Route component={NotFoundView} exact />
       </Switch>
-    </>
+    </BrowserRouter>
   );
 }
